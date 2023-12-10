@@ -63,37 +63,45 @@ function count_y(a, b, c, d, x_arr) {
 }
 
 export function approx(search, a, b, c, d) {
-	let xArr = Array.from({ length: 100 }, (_, i) => i / 10)
-	let yArr = count_y(a, b, c, d, xArr)
-	let yArrPred = count_y(a, b, c, d, xArr)
+	let xArr = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+	let yArr = [10, 12, 15, 18, 21, 19, 12, 11, 13, 19, 32]
 
-	// методом научного тыка находим более менее норм значения и выписываем их
-	if (!search) {
-		const bStart = 0.5,
-			cStart = 4.14
-		const coef = move_b(bStart, cStart, 0.3, xArr, yArr)
-		yArrPred = count_y(...coef, xArr)
+	let xArrPred = []
+	for (let i = 0; i <= 50.1; i += 0.1) {
+		xArrPred.push(i)
 	}
 
-	// ищем минимальное значение
-	if (search) {
-		let fMin = Infinity
-		let minIndex
-		for (let c = 4.1; c < 4.2; c += 0.001) {
-			for (let b = 0.4; b < 0.6; b += 0.001) {
-				const zArr = count_z_i(b, c, xArr)
-				const a = count_a(zArr, yArr)
-				const d = count_d(a, zArr, yArr)
-				const mnk = f_mnk(a, d, zArr, yArr)
+	let yArrPred = count_y(a, b, c, d, xArrPred)
 
-				if (mnk < fMin) {
-					fMin = mnk
-					minIndex = [a, b, c, d]
-				}
-			}
+	const pred = true
+
+	if (search) {
+		if (!pred) {
+			const bStart = 0.5,
+				cStart = 4.14
+			const coef = move_b(bStart, cStart, 0.3, xArr, yArr)
+			yArrPred = count_y(...coef, xArrPred)
 		}
 
-		yArrPred = count_y(...minIndex, xArr)
+		if (pred) {
+			let fMin = Infinity
+			let minIndex
+			for (let c = 4.1; c < 4.2; c += 0.001) {
+				for (let b = 0.4; b < 0.6; b += 0.001) {
+					const zArr = count_z_i(b, c, xArr)
+					const a = count_a(zArr, yArr)
+					const d = count_d(a, zArr, yArr)
+					const mnk = f_mnk(a, d, zArr, yArr)
+
+					if (mnk < fMin) {
+						fMin = mnk
+						minIndex = [a, b, c, d]
+					}
+				}
+			}
+
+			yArrPred = count_y(...minIndex, xArr)
+		}
 	}
 
 	return [xArr, yArr, yArrPred]

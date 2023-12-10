@@ -1,8 +1,12 @@
-# React + Vite
+# Description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React project that utilizes the Plotly.js library to approximate a function. The project was created as part of a university assignment and serves as a practice exercise for working with Plotly. The project includes an array, x_arr_pred, which is used to generate data points for the function approximation. The main goal of the project is to demonstrate the use of Plotly.js for creating interactive and visually appealing function approximations within a React application.
 
-Currently, two official plugins are available:
+# Technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- React Plotly
+
+# Illustration
+
+![Screen](https://i.imgur.com/viX5JNV.jpg 'Screen')

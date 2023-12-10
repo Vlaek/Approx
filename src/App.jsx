@@ -11,7 +11,7 @@ export default function App() {
 		d: 2,
 	})
 
-	const search = true
+	const search = false
 
 	const [xArr, yArr, yArrPred] = approx(
 		search,
@@ -20,6 +20,11 @@ export default function App() {
 		coord.c,
 		coord.d,
 	)
+
+	let xArrPred = []
+	for (let i = 0; i <= 50.1; i += 0.1) {
+		xArrPred.push(i)
+	}
 
 	const mape = MAPE(yArr, yArrPred)
 
@@ -34,13 +39,13 @@ export default function App() {
 								x: xArr,
 								y: yArr,
 								type: 'scatter',
-								mode: 'markers',
+								mode: 'lines',
 								line: { shape: 'spline', smoothing: 1.3 },
 								marker: { color: 'red' },
 								name: 'y',
 							},
 							{
-								x: xArr,
+								x: xArrPred,
 								y: yArrPred,
 								type: 'scatter',
 								mode: 'lines',
