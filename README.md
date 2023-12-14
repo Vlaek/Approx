@@ -4,7 +4,7 @@ This is a React project that utilizes the Plotly.js library to approximate a fun
 
 # Technologies
 
-- React
+- HTML, CSS, SASS, JavaScript, React
 - React Plotly
 
 # Illustration
